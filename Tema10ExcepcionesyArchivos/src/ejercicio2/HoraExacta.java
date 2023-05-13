@@ -17,13 +17,29 @@ public class HoraExacta extends Hora {
 	 * @param hora    contendra valor para atributo hora
 	 * @param minuto  contendra valor para atributo minuto
 	 * @param segundo contendra valor para atributo segundo
+	 * 
+	 * @throws NegativeHourException   indica valor de parametro de entrada negativo
+	 * @throws NegativeMinuteException indica valor de parametro de entrada negativo
+	 * @throws NegativeSecondException indica valor de parametro de entrada negativo
 	 */
-	public HoraExacta(int hora, int minuto, int segundo) {
+	public HoraExacta(int hora, int minuto, int segundo)
+			throws NegativeHourException, NegativeMinuteException, NegativeSecondException {
 		// se heredan hora y minuto de su super
 		super(hora, minuto);
+		// si hora menor a 0 lanzo excepcion
+		if (hora < 0) {
+			throw new NegativeHourException();
+		}
+		// si minuto menor a 0 lanzo excepcion
+		if (minuto < 0) {
+			throw new NegativeMinuteException();
+		}
+		// si segundo menor a 0 lanzo excepcion
+		if (segundo < 0) {
+			throw new NegativeSecondException();
+		}
 		// y si el parametro de entrada esta entre 0 y 59 incluidos asigno su valor a
 		// atributo segundo
-
 		if (segundo >= 0 && segundo <= 59) {
 			this.segundo = segundo;
 		}
@@ -33,6 +49,7 @@ public class HoraExacta extends Hora {
 	 * setter de atributo segundo
 	 * 
 	 * @param segundo
+	 * @throws NegativeSecondException indica valor de parametro de entrada negativo
 	 */
 	public void setSegundos(int segundo) throws NegativeSecondException {
 		// si el parametro de entrada esta entre 0 y 59 incluidos asigno su valor a

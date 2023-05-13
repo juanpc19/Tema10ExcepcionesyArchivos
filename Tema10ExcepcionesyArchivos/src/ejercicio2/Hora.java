@@ -18,8 +18,20 @@ public class Hora {
 	 * 
 	 * @param hora   contendra valor para atributo hora
 	 * @param minuto contendra valor para atributo minuto
+	 * @throws NegativeHourException   indica valor de parametro de entrada negativo
+	 * @throws NegativeMinuteException indica valor de parametro de entrada negativo
 	 */
-	public Hora(int hora, int minuto) {
+	public Hora(int hora, int minuto) throws NegativeHourException, NegativeMinuteException {
+
+		// si minuto menor a 0 lanzo excepcion
+		if (hora < 0) {
+			throw new NegativeHourException();
+		}
+		// si minuto menor a 0 lanzo excepcion
+		if (minuto < 0) {
+			throw new NegativeMinuteException();
+		}
+
 		// si hora y minuto estan dentro del rango de valores correctos
 		if (hora >= 0 & hora <= 23 && minuto >= 0 && minuto <= 59) {
 			// los asigno a sus atributos
@@ -33,10 +45,12 @@ public class Hora {
 	 * 
 	 * @param hora contendra valor para atributo hora
 	 * @return posible devolvera true o false segun sea posible modificar hora o no
+	 * @throws NegativeHourException indica valor de parametro de entrada negativo
 	 */
 	public boolean setHora(int hora) throws NegativeHourException {
 		boolean posible = false;
 
+		// si hora menor a 0 lanzo excepcion
 		if (hora < 0) {
 			throw new NegativeHourException();
 		}
@@ -56,10 +70,12 @@ public class Hora {
 	 * @param minuto contendra valor para atributo minuto
 	 * @return posible devolvera true o false segun sea posible modificar minuto o
 	 *         no
+	 * @throws NegativeMinuteException indica valor de parametro de entrada negativo
 	 */
 	public boolean setMinuto(int minuto) throws NegativeMinuteException {
 		boolean posible = false;
 
+		// si minuto menor a 0 lanzo excepcion
 		if (minuto < 0) {
 			throw new NegativeMinuteException();
 		}
