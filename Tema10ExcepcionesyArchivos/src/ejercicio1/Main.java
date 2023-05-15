@@ -10,6 +10,8 @@ public class Main {
 		
 		System.out.println(Utils.readDouble(dogma));
 
+		dogma.nextLine();
+		
 		System.out.println(Utils.readInt(dogma));
 
 		dogma.close();
